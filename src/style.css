@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.danger {
+    color: rgb(208, 21, 21);
+    background-color: rgb(255, 217, 217);
+}
+.success {
+    color: green;
+    background-color: rgb(181, 240, 181);
+}
+
+.show-container{
+    display: inline;
+}
