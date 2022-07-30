@@ -12,7 +12,7 @@ let editflag = false
 
 form.addEventListener("submit", mainFunction)
 clearBtn.addEventListener("click", clearItems)
-window.addEventListener("click", restoreItems)
+window.addEventListener("DOMContentLoaded", restoreItems)
 
 function mainFunction(e){
     e.preventDefault()
@@ -21,8 +21,8 @@ function mainFunction(e){
 
     if(value && !editflag){
         const element = document.createElement("div")
-        element.classList.add("item", "flex", "justify-between", "text-2xl", "pb-1")
-        const attr = document.createAttribute("data-id")
+        element.classList.add("item", "flex", "justify-between", "text-2xl")
+        let attr = document.createAttribute("data-id")
         attr.value = id
         element.setAttributeNode(attr)
         element.innerHTML = `<p class="value text-whitesmoke">${value}</p>
@@ -30,7 +30,7 @@ function mainFunction(e){
                             <button class="text-white inline-block edit-btn hover:text-sky-600">
                                 <i class="fa-solid fa-pen"></i>
                             </button>
-                            <button class="delete-btn inline-block text-red-500 hover:text-red-800">
+                            <button class="delete-btn inline-block text-red-200 hover:text-red-600">
                                 <i class="fa-solid fa-trash"></i>
                             </button>
                         </div>`
@@ -115,7 +115,6 @@ function editItem(e){
 function addToLocalStorage(a, b){
     const stuff = {initial: a, final: b}
     let box = getBox()
-    console.log(box)
     box.push(stuff)
     localStorage.setItem("article", JSON.stringify(box))
 }
@@ -154,14 +153,16 @@ function restoreItems(){
     box.forEach(function(item){
         ifValueEditFlag(item.initial, item.final)
     })
+    cont.classList.add("show-container")
     }
+    
 }
 
 
 function ifValueEditFlag(id, value){
     const element = document.createElement("div")
-        element.classList.add("item", "flex", "justify-between", "text-2xl", "pb-1")
-        const attr = document.createAttribute("data-id")
+        element.classList.add("item", "flex", "justify-between", "text-2xl")
+        let attr = document.createAttribute("data-id")
         attr.value = id
         element.setAttributeNode(attr)
         element.innerHTML = `<p class="value text-whitesmoke">${value}</p>
@@ -169,7 +170,7 @@ function ifValueEditFlag(id, value){
                             <button class="text-white inline-block edit-btn hover:text-sky-600">
                                 <i class="fa-solid fa-pen"></i>
                             </button>
-                            <button class="delete-btn inline-block text-red-500 hover:text-red-800">
+                            <button class="delete-btn inline-block text-red-200 hover:text-red-600">
                                 <i class="fa-solid fa-trash"></i>
                             </button>
                         </div>`
